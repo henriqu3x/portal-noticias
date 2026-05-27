@@ -14,10 +14,44 @@ const App = () => {
           </ul>
         </nav>
         <form>
-          <input type="text" placeholder="Pesquisar"/>
+          <label htmlFor="search-input">Pesquisar</label>
+          <input id="search-input" type="search" placeholder="Pesquisar"/>
           <button aria-label="Pesquisar Conteudo"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
       </header>
+      <main>
+        <section aria-label="Sessão Noticias" id="noticias">
+          <aside id="noticias-laterais">
+            <article>
+              <img src="" alt="" />
+              <h2>title</h2>
+              <p>descricao</p>
+            </article>
+            <article>
+              <img src="" alt="" />
+              <h2>title</h2>
+              <p>descricao</p>
+            </article>
+            <article>
+              <img src="" alt="" />
+              <h2>title</h2>
+              <p>descricao</p>
+            </article>
+          </aside>
+          <section aria-label="noticias principais" id="noticias-principais">
+            <article>
+              <img src="" alt="" />
+              <h2>title</h2>
+              <p>descricao</p>
+            </article>
+            <article>
+              <img src="" alt="" />
+              <h2>title</h2>
+              <p>descricao</p>
+            </article>
+          </section>
+        </section>
+      </main>
     </>
   )
 }
