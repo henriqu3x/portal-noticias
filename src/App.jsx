@@ -52,6 +52,19 @@ const App = () => {
           </section>
         </section>
       </main>
+      <footer>
+        <p>Nos acompanhe nas redes sociais</p>
+        <div role="socialmedia">
+          <ul>
+            <li>
+              <a href="" aria-label="Rede social instagram">Instagram</a>
+            </li>
+            <li>
+              <a href="" aria-label="Rede social facebook">Facebook</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </>
   )
 }
