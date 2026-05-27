@@ -1,70 +1,15 @@
+import Footer from "./components/footer/Footer"
+import Header from "./components/header/Header"
+import SectionNoticias from "./components/sectionNoticias/SectionNoticias"
+
 const App = () => {
   return(
     <>
-      <header>
-        <h2>Portal</h2>
-        <nav>
-          <ul>
-            <li>
-              <a href="" aria-label="Noticias-recentes">Noticias recentes</a>
-            </li>
-            <li>
-              <a href="" aria-label="Principais-noticias">Principais noticias</a>
-            </li>
-          </ul>
-        </nav>
-        <form>
-          <label htmlFor="search-input">Pesquisar</label>
-          <input id="search-input" type="search" placeholder="Pesquisar"/>
-          <button aria-label="Pesquisar Conteudo"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-      </header>
+      <Header/>
       <main>
-        <section aria-label="Sessão Noticias" id="noticias">
-          <aside id="noticias-laterais">
-            <article>
-              <img src="" alt="" />
-              <h2>title</h2>
-              <p>descricao</p>
-            </article>
-            <article>
-              <img src="" alt="" />
-              <h2>title</h2>
-              <p>descricao</p>
-            </article>
-            <article>
-              <img src="" alt="" />
-              <h2>title</h2>
-              <p>descricao</p>
-            </article>
-          </aside>
-          <section aria-label="noticias principais" id="noticias-principais">
-            <article>
-              <img src="" alt="" />
-              <h2>title</h2>
-              <p>descricao</p>
-            </article>
-            <article>
-              <img src="" alt="" />
-              <h2>title</h2>
-              <p>descricao</p>
-            </article>
-          </section>
-        </section>
+        <SectionNoticias/>
       </main>
-      <footer>
-        <p>Nos acompanhe nas redes sociais</p>
-        <div role="socialmedia">
-          <ul>
-            <li>
-              <a href="" aria-label="Rede social instagram">Instagram</a>
-            </li>
-            <li>
-              <a href="" aria-label="Rede social facebook">Facebook</a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <Footer/>
     </>
   )
 }
