@@ -18,6 +18,22 @@ nav ul li a{
     color: var(--text-color-primary);
     padding: 20px;
     transition: 0.2s all ease-in-out;
+    position: relative;
+}
+
+nav ul li a::after{
+    content: '';
+    position: absolute;
+    background-color: var(--background-primary);
+    bottom: 8px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    transition: 0.2s all ease-in-out;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
 }
 
 nav ul li a:hover{

@@ -19,6 +19,22 @@ footer ul li a{
     text-decoration: none;
     color: var(--text-color-primary);
     transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+footer ul li a::after{
+    position: absolute;
+    content: '';
+    bottom: -2px;
+    left: 0;
+    background-color: var(--background-primary);
+    height: 2px;
+    width: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+footer ul li a:hover::after{
+    width: 100%;
 }
 
 footer ul li a:hover{
