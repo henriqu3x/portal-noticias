@@ -1,0 +1,35 @@
+#noticias{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--background-primary);
+    height: 100%;
+    padding: 0 20px;
+}
+
+#noticias aside{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#noticias aside article{
+    background-color: var(--text-color-primary);
+    height: calc(45vh - 140px);
+    width: 100%;
+}
+
+#noticias section{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#noticias section article{
+    background-color: var(--text-color-primary);
+    height: calc(58vh - 140px);
+    width: 100%;
+}

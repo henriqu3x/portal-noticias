@@ -6,7 +6,7 @@ const App = () => {
   return(
     <>
       <Header/>
-      <main>
+      <main style={{height: 'calc(100vh - 140px)'}}>
         <SectionNoticias/>
       </main>
       <Footer/>
