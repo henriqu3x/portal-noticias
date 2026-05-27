@@ -12,3 +12,7 @@
   --text-color-primary: #fff;
   --text-color-secondary: #2404BA;
 }
+
+::placeholder{
+  color: var(--text-color-primary);
+}

@@ -15,9 +15,11 @@ const Header = () => {
                 </ul>
             </nav>
             <form>
-                <label htmlFor="search-input">Pesquisar</label>
-                <input id="search-input" type="search" placeholder="Pesquisar" />
-                <button aria-label="Pesquisar Conteudo"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <label htmlFor="search-input">Pesquisar:</label>
+                <div role='campos-pesquisa'>
+                    <input id="search-input" type="search" placeholder="Noticias..." />
+                    <button aria-label="Pesquisar Conteudo"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
             </form>
         </header>
     )
