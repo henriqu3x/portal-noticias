@@ -17,3 +17,13 @@
 ::placeholder{
   color: var(--text-color-primary);
 }
+
+main{
+  height: calc(100vh - 140px)
+}
+
+@media (max-width:500px) {
+  main{
+    height: auto;
+  }
+}

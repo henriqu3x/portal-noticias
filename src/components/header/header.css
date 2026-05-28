@@ -72,3 +72,17 @@ form div button{
 form div button:hover{
     color: var(--background-primary);
 }
+
+@media (max-width:500px) {
+    header h2{
+        display: none;
+    }
+
+    nav ul li a{
+        font-size: 12px;
+    }
+
+    form div input{
+        width: 120px;
+    }
+}
