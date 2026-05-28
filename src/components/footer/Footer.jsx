@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer>
             <p>Nos acompanhe nas redes sociais</p>
-            <div role="socialmedia">
+            <div>
                 <ul>
                     <li>
                         <a href="" aria-label="Rede social instagram">Instagram</a>

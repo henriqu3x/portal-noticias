@@ -11,6 +11,7 @@
 
   --text-color-primary: #fff;
   --text-color-secondary: #2404BA;
+  --text-color-tertiary: #000;
 }
 
 ::placeholder{
