@@ -1,5 +1,4 @@
 article{
-    border-radius: 16px;
     background-color: var(--text-color-primary);
     height: calc(58vh - 140px);
     width: 100%;
@@ -11,7 +10,6 @@ article{
 
 article img{
     height: 100%;
-    border-radius: 16px;
 }
 
 article a{
