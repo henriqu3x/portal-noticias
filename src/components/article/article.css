@@ -16,8 +16,12 @@ a article{
     justify-content: start;
     padding: 15px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
+    transition: 0.2s all ease-in-out;
+}
 
+a article:hover{
+    background-size: 105%;
 }
 
 a article p{
