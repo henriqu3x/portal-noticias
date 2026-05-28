@@ -1,0 +1,40 @@
+article{
+    border-radius: 16px;
+    background-color: var(--text-color-primary);
+    height: calc(58vh - 140px);
+    width: 100%;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+    padding-right: 10px;
+}
+
+article img{
+    height: 100%;
+    border-radius: 16px;
+}
+
+article a{
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--text-color-tertiary);
+}
+
+article a h2{
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+article a p{
+    font-size: 18px;
+}
+
+@media (max-width:1280px) {
+    article a h2{
+        font-size: 24px;
+    }
+
+    article a p{
+    font-size: 14px;
+    }
+}
