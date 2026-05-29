@@ -12,6 +12,12 @@
   --text-color-primary: #fff;
   --text-color-secondary: #2404BA;
   --text-color-tertiary: #000;
+
+  --font-medium: 30px;
+  --font-small: 18px;
+
+  --font-medium-mobile: 24px;
+  --font-small-mobile: 14px;
 }
 
 ::placeholder{
