@@ -13,16 +13,19 @@ const SectionNoticias = () => {
             <aside id="noticias-laterais">
                 <Article
                 image={imgNoticia1}
+                alt=''
                 title='Deputados debatem fim da escala 6x1'
                 descricao='Comissão especial aprovou proposta por 34 votos a 4'
                 />
                 <Article
                 image={imgNoticia2}
+                alt=''
                 title="Justiça suspende 'times square paulistana'"
                 descricao='Prefeitura de São Paulo pode apresentar recurso'
                 />
                 <Article
                 image={imgNoticia3}
+                alt=''
                 title='Papa Leão XIV conhece Ferrari Luce de R$ 3,2 milhões e ganha volante'
                 descricao='a Luce é o primeiro modelo da marca italiana com espaço para cinco ocupantes'
                 />
