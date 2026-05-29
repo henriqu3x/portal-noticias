@@ -5,18 +5,18 @@
     gap: 20px;
     background-color: var(--background-primary);
     height: 100%;
-    padding: 0 20px;
+    padding: 0 80px;
 }
 
 #noticias aside{
-    width: 35%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
 #noticias section{
-    width: 65%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 5px;

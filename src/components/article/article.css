@@ -1,8 +1,8 @@
-a{
+.noticias-aside{
     text-decoration: none;
 }
 
-a article{
+.noticias-aside article{
     background-color: var(--text-color-primary);
     height: calc(45vh - 140px);
     width: 100%;
@@ -20,10 +20,10 @@ a article{
     transition: 0.2s all ease-in-out;
 }
 
-a article:hover{
+.noticias-aside article:hover{
     background-size: 105%;
 }
 
-a article p{
+.noticias-aside article p{
     color: var(--background-primary);
 }
