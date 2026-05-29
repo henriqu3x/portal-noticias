@@ -64,7 +64,7 @@ form div button{
     background-color: transparent;
     border: none;
     color: var(--text-color-primary);
-    font-size: 20px;
+    font-size: var(--font-small);
     cursor: pointer;
     transition: 0.2s all ease-in-out;
 }
@@ -79,7 +79,7 @@ form div button:hover{
     }
 
     nav ul li a{
-        font-size: 12px;
+        font-size: var(--font-small-mobile);
     }
 
     form div input{

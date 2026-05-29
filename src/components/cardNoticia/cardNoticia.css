@@ -19,12 +19,12 @@ article a{
 }
 
 article a h2{
-    font-size: 30px;
+    font-size: var(--font-medium);
     margin-bottom: 5px;
 }
 
 article a p{
-    font-size: 18px;
+    font-size: var(--font-small);
 }
 
 @media (max-width:1280px) {
@@ -39,10 +39,10 @@ article a p{
     }
 
     article a h2{
-        font-size: 24px;
+        font-size: var(--font-medium-mobile);
     }
 
     article a p{
-    font-size: 14px;
+    font-size: var(--font-small-mobile);
     }
 }
