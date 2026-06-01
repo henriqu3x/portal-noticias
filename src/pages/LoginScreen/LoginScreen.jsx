@@ -32,9 +32,9 @@ const LoginScreen = () => {
                     <p>OU</p>
                 </div>
 
-                <button className='criar-conta' aria-label='Criar-conta'>
+                <NavLink to={'/register'} className='criar-conta' aria-label='Criar-conta'>
                     Criar Conta
-                </button>
+                </NavLink>
             </section>
         </main>
     )
