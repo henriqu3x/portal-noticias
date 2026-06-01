@@ -55,7 +55,7 @@ form div{
 form div input{
     width: 300px;
     padding: 10px;
-    border-radius: 16px;
+    border-radius: 6px;
     background-color: var(--text-color-secondary);
     color: var(--text-color-primary);
     border: solid 1.5px var(--text-color-primary);
@@ -72,6 +72,19 @@ form div button{
 
 form div button:hover{
     color: var(--background-primary);
+}
+
+header .a-login{
+    background-color: var(--text-color-primary);
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-color-secondary);
+    transition: all 0.2s ease-in-out;
+}
+
+header .a-login:hover{
+    opacity: 0.95;
 }
 
 @media (max-width:500px) {

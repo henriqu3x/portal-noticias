@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './header.css'
 
 const Header = () => {
@@ -21,6 +22,8 @@ const Header = () => {
                     <button aria-label="Pesquisar Conteudo"><i className="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
+
+            <NavLink className='a-login' aria-label='fazer-login' to={'/login'}>Fazer Login</NavLink>
         </header>
     )
 }
