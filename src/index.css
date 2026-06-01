@@ -6,7 +6,7 @@
 }
 
 :root{
-  --background-primary: #efefef;
+  --background-primary: #fefefe;
   --background-secondary: #2700DB;
 
   --text-color-primary: #fff;
@@ -26,6 +26,10 @@
 
 main{
   height: calc(100vh - 140px)
+}
+
+body{
+  background-color: var(--background-primary);
 }
 
 @media (max-width:500px) {

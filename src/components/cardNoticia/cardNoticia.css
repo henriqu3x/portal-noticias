@@ -8,7 +8,7 @@
 }
 
 .noticias-princi article{
-    height: calc(58vh - 140px);
+    height: calc(57.8vh - 140px);
     width: 100%;
     display: flex;
     align-items: start;

@@ -3,7 +3,7 @@ import './header.css'
 const Header = () => {
     return (
         <header>
-            <h2>Portal</h2>
+            <h2>F5</h2>
             <nav>
                 <ul>
                     <li>

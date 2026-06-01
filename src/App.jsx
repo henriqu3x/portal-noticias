@@ -1,15 +1,9 @@
-import Footer from "./components/footer/Footer"
-import Header from "./components/header/Header"
-import SectionNoticias from "./components/sectionNoticias/SectionNoticias"
+import Paths from "./routes/Paths"
 
 const App = () => {
   return(
     <>
-      <Header/>
-      <main>
-        <SectionNoticias/>
-      </main>
-      <Footer/>
+      <Paths/>
     </>
   )
 }
