@@ -76,11 +76,10 @@
     color: var(--text-color-tertiary);
 }
 
-.input-senha .i-eye{
+.input-senha .box-eye{
     position: absolute;
     right: 0px;
-    padding: 5px 5px;
-    bottom: 35%;
+    bottom: 33%;
     cursor: pointer;
     color: var(--text-color-secondary);
     transition: all 0.2s ease-in-out;

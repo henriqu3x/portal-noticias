@@ -1,7 +1,14 @@
 import { NavLink } from 'react-router-dom'
 import './loginScreen.css'
+import { useState } from 'react'
 
 const LoginScreen = () => {
+    const [showPass, setShowPass] = useState(false)
+
+    const showPassword = () => {
+        setShowPass(!showPass)
+    }
+
     return (
         <main className='section-login'>
             <section className='login'>
@@ -19,8 +26,10 @@ const LoginScreen = () => {
 
                     <label htmlFor="senha">Senha:</label>
                     <div className='input-senha'>
-                        <input id='senha' type="password" placeholder='Ex: Carlos2090!' />
-                        <i className="fa-solid fa-eye i-eye"></i>
+                        <input id='senha' type={showPass ? 'text' : 'password'} placeholder='Ex: Carlos2090!' />
+                        <div onClick={showPassword} className='box-eye'>
+                            <i className="fa-solid fa-eye i-eye"></i>
+                        </div>
                     </div>
 
                     <button aria-label='Fazer-Login' type='submit'>
