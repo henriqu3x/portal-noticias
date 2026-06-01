@@ -3,9 +3,9 @@ import './loginScreen.css'
 
 const LoginScreen = () => {
     return (
-        <section className='section-login'>
+        <main className='section-login'>
             <section className='login'>
-                <NavLink className='a-voltar' to={'/'}><i className="fa-solid fa-arrow-left i-voltar"></i></NavLink>
+                <NavLink aria-label='Voltar para tela inicial' className='a-voltar' to={'/'}><i className="fa-solid fa-arrow-left i-voltar"></i></NavLink>
                 <div className='text-content'>
                     <h2>F5</h2>
                     <h3>Faça login para acessar todas as notícias disponíveis.</h3>
@@ -36,7 +36,7 @@ const LoginScreen = () => {
                     Criar Conta
                 </button>
             </section>
-        </section>
+        </main>
     )
 }
 
