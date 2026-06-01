@@ -1,0 +1,25 @@
+.pageNoticia{
+     width: 100vw;
+     background-color: var(--background-primary);
+     display: flex;
+     justify-content: center;
+}
+
+.pageNoticia .section-noticia{
+     margin-block: 40px;
+     width: 50%;
+}
+
+.pageNoticia .section-noticia h1{
+     margin-bottom: 15px;
+}
+
+
+.pageNoticia .section-noticia img{
+     margin-block: 15px;
+     width: 100%;
+}
+
+.p-conteudo{
+     margin-bottom: 40px;
+}

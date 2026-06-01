@@ -144,7 +144,7 @@
      padding: 10px 15px;
      border: none;
      background-color: var(--text-color-quaternary);
-     color: var(--text-color-primary);
+     color: var(--background-primary);
      border-radius: 4px;
      cursor: pointer;
      transition: 0.2s all ease-in-out;
@@ -192,4 +192,5 @@
 
 .section-admin .content .cardNoticia .box-btn button:nth-child(2){
      background-color: var(--text-color-quaternary);
+     color: var(--background-primary);
 }

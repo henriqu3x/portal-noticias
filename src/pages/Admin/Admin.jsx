@@ -51,7 +51,7 @@ const Admin = () => {
                   <p>lucas@gmail.com</p>
                 </div>
                 <div>
-                  <select name="selectPerfil" id="perfil">
+                  <select aria-label="selecionar-perfil" name="selectPerfil" id="perfil">
                     <option value="cliente">Cliente</option>
                     <option value="admin">Admin</option>
                   </select>
