@@ -8,11 +8,14 @@
 :root{
   --background-primary: #fefefe;
   --background-secondary: #2700DB;
+  --background-tertiary: #222;
 
   --text-color-primary: #fff;
   --text-color-secondary: #2404BA;
   --text-color-tertiary: #000;
 
+  --font-xl: 250px;
+  --font-large: 40px;
   --font-medium: 30px;
   --font-small: 18px;
 

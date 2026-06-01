@@ -1,10 +1,11 @@
+import { NavLink } from 'react-router-dom'
 import './loginScreen.css'
 
 const LoginScreen = () => {
     return (
         <section className='section-login'>
             <section className='login'>
-                <a className='a-voltar' href=""><i className="fa-solid fa-arrow-left i-voltar"></i></a>
+                <NavLink className='a-voltar' to={'/'}><i className="fa-solid fa-arrow-left i-voltar"></i></NavLink>
                 <div className='text-content'>
                     <h2>F5</h2>
                     <h3>Faça login para acessar todas as notícias disponíveis.</h3>
