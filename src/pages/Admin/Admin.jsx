@@ -1,10 +1,20 @@
 import "./admin.css";
 import Header from "../../components/header/Header";
+import Modal from "../../components/modal/Modal";
+import { useState } from "react";
 
 const Admin = () => {
+  const [openModal, setOpenModal] = useState(false)
+  const [modeModal, setModeModal] = useState(null)
+
+  const estadoModal = () => {
+    setOpenModal(!openModal)
+  }
+
   return (
     <>
       <Header />
+      {openModal? <Modal onClose={() => setOpenModal(false)} mode={modeModal}/> : null}
       <main className="pageAdmin">
         <section className="section-admin">
           <h1>Painel Admin</h1>
@@ -42,6 +52,10 @@ const Admin = () => {
               <button
                 className="adicionarNoticias"
                 aria-label="adicionar-noticias"
+                onClick={() => {
+                  setModeModal('add')
+                  estadoModal()
+                }}
               >
                 Adicionar Noticia
               </button>
@@ -64,7 +78,10 @@ const Admin = () => {
                   <p>descricao</p>
                 </div>
                 <div className="box-btn">
-                  <button aria-label="editar-noticia">Editar</button>
+                  <button aria-label="editar-noticia" onClick={()=>{
+                    setModeModal('att')
+                    estadoModal()
+                  }}>Editar</button>
                   <button aria-label="arquivar-noticia">Arquivar</button>
                 </div>
               </div>

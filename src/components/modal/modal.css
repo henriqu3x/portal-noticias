@@ -1,0 +1,118 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+    z-index: 1;
+}
+
+.modal{
+    margin-top: 50px;
+    width: 60%;
+    height: 85%;
+    background-color: var(--background-primary);
+    border: 1px solid var(--background-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 6px;
+    overflow-y: scroll;
+    animation: zoomIn 0.2s ease;
+    z-index: 999;
+}
+
+.modal h2{
+    color: var(--text-color-secondary);
+}
+
+.modal .box-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal .box-text div{
+    color: var(--text-color-secondary);
+    padding: 5px;
+    cursor: pointer;
+}
+
+.modal form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+}
+
+.modal form input, .modal form select, .modal form textarea{
+    padding: 10px 15px;
+    border-radius: 4px;
+    background-color: var(--background-primary);
+    border: 2px solid var(--text-color-tertiary);
+    margin-bottom: 10px;
+}
+
+.modal form select{
+    cursor: pointer;
+}
+
+.modal form input:focus, .modal form textarea:focus{
+    border: 2px solid var(--text-color-secondary);
+    outline: none;
+}
+
+.modal form select:focus{
+    outline: 2px solid var(--text-color-tertiary);
+}
+
+.modal form textarea{
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100px;
+    min-height: 100px;
+}
+
+.modal form button{
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: var(--text-color-secondary);
+    color: var(--text-color-primary);
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal form button:hover{
+    background-color: var(--background-secondary);
+}
+
+.modal ::placeholder{
+    color: var(--text-color-tertiary);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
