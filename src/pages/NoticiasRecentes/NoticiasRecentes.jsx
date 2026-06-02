@@ -1,0 +1,54 @@
+import './noticiasRecentes.css'
+import noticia3 from '../../assets/noticia3.avif'
+
+const NoticiasRecentes = () => {
+    return(
+        <main className='noticias-recentes'>
+            <section className='section-noticias-recentes'>
+                <h1>Noticias Recentes</h1>
+
+                <div className='cards'>
+                    <a href="" aria-label='noticia-clicavel'>
+                        <div className='card'>
+                            <img src={noticia3} alt="" />
+                            <div className='box-text'>
+                                <h2>Papa Leão XIV conhece Ferrari Luce de R$ 3,2 milhões e ganha volante</h2>
+                                <p>Além de ser o primeiro carro elétrico da Ferrari, a Luce também é o primeiro modelo da marca italiana com espaço para cinco ocupantes e custa cerca de R$ 3,2 milhões.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" aria-label='noticia-clicavel'>
+                        <div className='card'>
+                            <img src={noticia3} alt="" />
+                            <div className='box-text'>
+                                <h2>Papa Leão XIV conhece Ferrari Luce de R$ 3,2 milhões e ganha volante</h2>
+                                <p>Além de ser o primeiro carro elétrico da Ferrari, a Luce também é o primeiro modelo da marca italiana com espaço para cinco ocupantes e custa cerca de R$ 3,2 milhões.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" aria-label='noticia-clicavel'>
+                        <div className='card'>
+                            <img src={noticia3} alt="" />
+                            <div className='box-text'>
+                                <h2>Papa Leão XIV conhece Ferrari Luce de R$ 3,2 milhões e ganha volante</h2>
+                                <p>Além de ser o primeiro carro elétrico da Ferrari, a Luce também é o primeiro modelo da marca italiana com espaço para cinco ocupantes e custa cerca de R$ 3,2 milhões.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <aside>
+                    <p>Veja Tambem</p>
+
+                    <div className='cards-aside'>
+                        <div className='card-aside'>
+                            <h2>Titulddddddddddddddddddddddddddo</h2>
+                            <img src={noticia3} alt="" />
+                        </div>
+                    </div>
+                </aside>
+        </main>
+    )
+}
+
+export default NoticiasRecentes

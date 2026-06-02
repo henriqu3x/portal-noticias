@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound/NotFound"
 import RegisterScreen from "../pages/RegisterScreen/RegisterScreen"
 import Admin from "../pages/Admin/Admin"
 import Noticia from "../pages/Noticia/Noticia"
+import NoticiasRecentes from "../pages/NoticiasRecentes/NoticiasRecentes"
 
 const Paths = () => {
     return(
@@ -16,6 +17,7 @@ const Paths = () => {
                     <Route path='/register' element={<RegisterScreen/>}/>
                     <Route path='/admin' element={<Admin/>}/>
                     <Route path='/noticia/:id' element={<Noticia/>}/>
+                    <Route path='/noticias-recentes' element={<NoticiasRecentes/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>
