@@ -4,7 +4,7 @@ import './header.css'
 const Header = () => {
     return (
         <header>
-            <h2>F5</h2>
+            <NavLink to={'/'}><h2>F5</h2></NavLink>
             <nav>
                 <ul>
                     <li>

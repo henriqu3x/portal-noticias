@@ -23,7 +23,7 @@ const Admin = () => {
                 <p>Total de noticias</p>
                 <h2>5</h2>
               </div>
-              <i className="fa-regular fa-user"></i>
+              <i className="fa-solid fa-book"></i>
             </div>
           </section>
 

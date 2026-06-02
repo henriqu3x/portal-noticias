@@ -1,25 +1,22 @@
 .pageNoticia{
-     width: 100vw;
+     width: 100%;
      background-color: var(--background-primary);
      display: flex;
      justify-content: center;
 }
 
 .pageNoticia .section-noticia{
-     margin-block: 40px;
+     padding-top: 40px;
      width: 50%;
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
 }
-
-.pageNoticia .section-noticia h1{
-     margin-bottom: 15px;
-}
-
 
 .pageNoticia .section-noticia img{
-     margin-block: 15px;
      width: 100%;
 }
 
 .p-conteudo{
-     margin-bottom: 40px;
+     padding-bottom: 40px;
 }
