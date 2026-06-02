@@ -1,8 +1,9 @@
+import { NavLink } from 'react-router-dom'
 import './cardNoticia.css'
 
 const CardNoticia = (props) => {
     return (
-        <a aria-label='bloco de noticias' className='noticias-princi' href="">
+        <NavLink aria-label='bloco de noticias' className='noticias-princi' to={'/noticia/1'}>
             <article>
                 <div className='img-wrraper'>
                     <img src={props.image} alt={props.alt} />
@@ -12,7 +13,7 @@ const CardNoticia = (props) => {
                     <p>{props.descricao}</p>
                 </div>
             </article>
-        </a>
+        </NavLink>
     )
 }
 
