@@ -8,10 +8,7 @@ const Header = () => {
             <nav>
                 <ul>
                     <li>
-                        <a href="" aria-label="Noticias-recentes">Noticias recentes</a>
-                    </li>
-                    <li>
-                        <a href="" aria-label="Principais-noticias">Principais noticias</a>
+                        <NavLink to={'/noticias-recentes'} aria-label="Noticias-recentes">Noticias recentes</NavLink>
                     </li>
                 </ul>
             </nav>
