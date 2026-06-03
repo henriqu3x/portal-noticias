@@ -18,9 +18,6 @@ const LoginScreen = () => {
                     <h3>Faça login para acessar todas as notícias disponíveis.</h3>
                 </div>
                 <form>
-                    <label htmlFor="usuario">Nome:</label>
-                    <input id='usuario' type="text" placeholder='Ex: Carlos' />
-
                     <label htmlFor="email">Email:</label>
                     <input id='email' type="email" placeholder='Ex: example@email.com' />
 
