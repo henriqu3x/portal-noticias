@@ -19,6 +19,9 @@ create table if not exists usuario(
 	constraint fk_usuario_perfil foreign key (perfil_id) references perfil(id)
 );
 
+insert into usuario (nome, email, senha, perfil_id) values 
+	('Henrique ADMIN', 'henrique.admin@gmail.com', '$2b$10$0MnRhIgKEv2hhZXz3QD42eTHw3HXHVvX/fReAjfLUJq6ZbcYNc7b.', 'b5b3cd1b-e11b-4aaa-9de8-49426dd203ae');
+
 create table if not exists image(
 	id uuid primary key default gen_random_uuid(),
 	url text,
