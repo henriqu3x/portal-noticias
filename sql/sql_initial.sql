@@ -6,6 +6,10 @@ create table if not exists perfil(
 	check (tipo_perfil IN ('admin', 'cliente'))
 );
 
+insert into perfil (tipo_perfil) values 
+('cliente'),
+('admin');
+
 create table if not exists usuario(
 	id uuid primary key default gen_random_uuid(),
 	nome varchar(75) not null,
