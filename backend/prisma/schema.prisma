@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model image {
+  id      String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  url     String?
+  alt     String?   @db.VarChar(255)
+  noticia noticia[]
+}
+
+model noticia {
+  id               String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  titulo           String    @db.VarChar(255)
+  descricao        String?
+  status           Boolean   @default(false)
+  image_id         String?   @db.Uuid
+  data_publicacao  DateTime? @default(now()) @db.Timestamptz(6)
+  usuario_id       String?   @db.Uuid
+  data_atualizacao DateTime? @default(now()) @db.Timestamptz(6)
+  conteudo         String
+  image            image?    @relation(fields: [image_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_noticia_image")
+  usuario          usuario?  @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_noticia_usuario")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model perfil {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tipo_perfil String    @default("cliente") @db.VarChar(20)
+  usuario     usuario[]
+}
+
+model usuario {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nome      String    @db.VarChar(75)
+  email     String    @unique @db.VarChar(100)
+  senha     String    @db.VarChar(255)
+  perfil_id String    @db.Uuid
+  noticia   noticia[]
+  perfil    perfil    @relation(fields: [perfil_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_usuario_perfil")
+}
