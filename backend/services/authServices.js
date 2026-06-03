@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt'
-import prisma from '../prisma/client'
+import prisma from '../prisma/client.js'
+import jwt from 'jsonwebtoken'
+import 'dotenv/config'
 
 class AuthServices {
     async register({nome, email, senha}) {
@@ -45,7 +47,47 @@ class AuthServices {
         }
     }
 
-    async login({nome, email,senha}){
+    async login({email, senha}){
+        const usuario = await prisma.usuario.findFirst({
+            where:{
+                email: email
+            },
+            include: {
+                perfil: true
+            }
+        })
 
+        if (!usuario) {
+            throw new Error("Usuario não encontrado");
+        }
+
+        const validarSenha = await bcrypt.compare(senha, usuario.senha)
+
+        if (!validarSenha) {
+            throw new Error("Senha invalida");
+        }
+
+        const token = jwt.sign({
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            tipo: usuario.perfil.tipo_perfil
+        }, process.env.JWT_SECRET, {
+            expiresIn: '7d'
+        })
+
+        const user = {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            tipo: usuario.perfil.tipo_perfil
+        }
+
+        return {
+            user,
+            token
+        }
     }
 }
+
+export default AuthServices
