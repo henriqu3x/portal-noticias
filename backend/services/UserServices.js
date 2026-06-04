@@ -2,9 +2,18 @@ import prisma from "../prisma/client.js"
 
 class UsersServices {
     async visualizarUsuarios(){
-        const usuarios = await prisma.usuario.findMany()
+        const usuarios = await prisma.usuario.findMany({
+            include:{
+                perfil:true
+            }
+        })
 
-        return usuarios
+        return usuarios.map((usuario) => ({
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            perfil: usuario.perfil.tipo_perfil
+        }))
     }
 
     async alterarStatus({id, status}){
