@@ -30,14 +30,14 @@ const RegisterScreen = () => {
         </div>
         <form>
           <label htmlFor="usuario">Nome:</label>
-          <input id="usuario" type="text" placeholder="Ex: Carlos" />
+          <input required name="usuario" id="usuario" type="text" placeholder="Ex: Carlos" />
 
           <label htmlFor="email">Email:</label>
-          <input id="email" type="email" placeholder="Ex: example@email.com" />
+          <input required name="email" id="email" type="email" placeholder="Ex: example@email.com" />
 
           <label htmlFor="senha">Senha:</label>
           <div className="input-senha">
-            <input id="senha" type={showPass?'text':'password'} placeholder="Ex: Carlos2090!" />
+            <input required name="senha" id="senha" type={showPass?'text':'password'} placeholder="Ex: Carlos2090!" />
             <div className="box-eye" onClick={showPassword}>
               <i className="fa-solid fa-eye i-eye"></i>
             </div>
@@ -46,6 +46,8 @@ const RegisterScreen = () => {
           <label htmlFor="repita-senha">Repita sua senha:</label>
           <div className="input-senha">
             <input
+              required
+              name="repita-senha"
               id="repita-senha"
               type={showPassRepita?'text':'password'}
               placeholder="Ex: Carlos2090!"

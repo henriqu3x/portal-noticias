@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
 class AuthServices {
-    async register({nome, email, senha, senha_repetida}) {
+    async register({usuario, email, senha, senha_repetida}) {
         const usuarioUnico = await prisma.usuario.findUnique({
             where: {email}
         })
@@ -27,8 +27,8 @@ class AuthServices {
             throw new Error("Perfil não encontrado");
         }
 
-        const usuario = {
-            nome,
+        const usuarioMock = {
+            usuario,
             email,
             senhaHasheada,
             tipo: tipo_perfil.id
@@ -36,10 +36,10 @@ class AuthServices {
 
         const usuarioBanco = await prisma.usuario.create({
             data:{
-                nome: usuario.nome,
-                email: usuario.email,
-                senha: usuario.senhaHasheada,
-                perfil_id: usuario.tipo
+                nome: usuarioMock.nome,
+                email: usuarioMock.email,
+                senha: usuarioMock.senhaHasheada,
+                perfil_id: usuarioMock.tipo
             }
         })
 
