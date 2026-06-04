@@ -21,6 +21,9 @@ const Modal = (props) => {
                     <label htmlFor="imagem">Imagem (Url):</label>
                     <input id='imagem' type="text" placeholder='Ex: https://site.com/imagem'/>
 
+                    <label htmlFor="imagem-alt">Imagem (Alt):</label>
+                    <input id='imagem-alt' type="text" placeholder='Ex: Jogadores da seleção brasileira'/>
+
                     <label htmlFor="conteudo">Conteudo:</label>
                     <textarea name="conteudo" id="conteudo" placeholder='Ex: A roupa usada pelos jogadores...'></textarea>
 
