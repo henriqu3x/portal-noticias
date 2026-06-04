@@ -1,6 +1,12 @@
 import prisma from "../prisma/client.js"
 
 class UsersServices {
+    async visualizarUsuarios(){
+        const usuarios = await prisma.usuario.findMany()
+
+        return usuarios
+    }
+
     async alterarStatus({id, status}){
         const perfil = await prisma.perfil.findFirst({
             where:{
