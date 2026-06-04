@@ -4,13 +4,17 @@ import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
 class AuthServices {
-    async register({nome, email, senha}) {
+    async register({nome, email, senha, senha_repetida}) {
         const usuarioUnico = await prisma.usuario.findUnique({
             where: {email}
         })
 
         if (usuarioUnico) {
             throw new Error("Já existe um usuario com esse email");
+        }
+
+        if (senha != senha_repetida) {
+            throw new Error("As senhas não batem");
         }
 
         const senhaHasheada = await bcrypt.hash(senha, 10)
