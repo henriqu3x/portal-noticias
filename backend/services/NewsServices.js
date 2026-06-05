@@ -1,4 +1,4 @@
-import prisma from "../prisma/client"
+import prisma from "../prisma/client.js"
 
 class NewsServices {
     async visualizarNoticias() {
@@ -22,12 +22,42 @@ class NewsServices {
     }
 
     async adicionarNoticia({ titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId }) {
+        if (!titulo) {
+            throw new Error("Titulo vazio");
+        }
+
+        if (!descricao) {
+            throw new Error("Descrição vazia");
+        }
+
         if (!imagemUrl) {
             throw new Error("Url da imagem vazio");
         }
 
         if (!imagemAlt) {
             throw new Error("Alt da imagem vazio");
+        }
+
+        if (!conteudo) {
+            throw new Error("Conteudo vazio");
+        }
+
+        if (!statusBool) {
+            throw new Error("Status não selecionado");
+        }
+
+        if (!usuarioId) {
+            throw new Error("Usuario id não informado");
+        }
+
+        const usuario = await prisma.usuario.findUnique({
+            where:{
+                id:usuarioId
+            }
+        })
+
+        if(!usuario){
+            throw new Error("Usuario não encontrado");
         }
 
         const resultado = await prisma.$transaction(async (tx) => {
@@ -66,7 +96,7 @@ class NewsServices {
 
     }
 
-    async editarNoticia({ idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId }) {
+    async editarNoticia({ idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool }) {
         const noticia = await prisma.noticia.findUnique({
             where: {
                 id: idNoticia
@@ -77,12 +107,28 @@ class NewsServices {
             throw new Error("Noticia não encontrada");
         }
 
+        if (!titulo) {
+            throw new Error("Titulo vazio");
+        }
+
+        if (!descricao) {
+            throw new Error("Descrição vazia");
+        }
+
         if (!imagemUrl) {
             throw new Error("Url da imagem vazio");
         }
 
         if (!imagemAlt) {
             throw new Error("Alt da imagem vazio");
+        }
+
+        if (!conteudo) {
+            throw new Error("Conteudo vazio");
+        }
+
+        if (!statusBool) {
+            throw new Error("Status não selecionado");
         }
 
         const resultado = await prisma.$transaction(async (tx) => {
@@ -104,7 +150,6 @@ class NewsServices {
                     titulo: titulo,
                     descricao: descricao,
                     status: statusBool,
-                    usuario_id: usuarioId,
                     conteudo: conteudo
                 },
                 include: {
@@ -118,7 +163,6 @@ class NewsServices {
                 statusBool: noticiaAtualizada.status,
                 imagemurl: noticiaAtualizada.image.url,
                 imagemAlt: noticiaAtualizada.image.alt,
-                usuarioId: noticiaAtualizada.usuario_id,
                 conteudo: noticiaAtualizada.conteudo,
                 dataPublicacao: noticiaAtualizada.data_publicacao,
                 dataAtualizacao: noticiaAtualizada.data_atualizacao
@@ -128,10 +172,20 @@ class NewsServices {
         return resultado
     }
 
-    async alterarStatusNoticia({ id, statusBool }) {
+    async alterarStatusNoticia({ idNoticia, statusBool }) {
+        const verificacaoNoticia = await prisma.noticia.findUnique({
+            where:{
+                id:idNoticia
+            }
+        })
+
+        if (!verificacaoNoticia) {
+            throw new Error("Noticia não encontrada");
+        }
+
         const noticia = await prisma.noticia.update({
             where: {
-                id: id
+                id: idNoticia
             },
             data: {
                 status: statusBool

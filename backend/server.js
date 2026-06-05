@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import AuthRoutes from './routes/AuthRoutes.js'
+import NewsRouter from './routes/NewsRoutes.js'
 
 const app = express()
 const port = 3000
@@ -15,6 +16,7 @@ app.get('/', (req,res) => {
 })
 
 app.use(AuthRoutes)
+app.use(NewsRouter)
 
 app.use((req,res) => {
     res.status(404).json({
