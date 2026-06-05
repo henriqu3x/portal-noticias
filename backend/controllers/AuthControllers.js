@@ -7,33 +7,45 @@ class AuthControllers {
     }
 
     async register(req,res){
-        const {usuario, email, senha, repita_senha} = req.body
-        const resultado = await this.authServices.register({usuario, email, senha, repita_senha})
-
-        if(resultado){
-            res.status(201).json({
-                message: "Usuario registrado com sucesso"
-            })
-        } else {
+        try {
+            const {usuario, email, senha, repita_senha} = req.body
+            const resultado = await this.authServices.register({usuario, email, senha, repita_senha})
+    
+            if(resultado){
+                res.status(201).json({
+                    message: "Usuario registrado com sucesso"
+                })
+            } else {
+                res.status(400).json({
+                    message: "Falha ao registrar usuario"
+                })
+            }
+        } catch (error) {
             res.status(400).json({
-                message: "Falha ao registrar usuario"
+                "error":error.message
             })
         }
     }
 
     async login(req,res){
-        const {email, senha} = req.body
-        const resultado = await this.authServices.login({email, senha})
-
-        if (resultado) {
-            res.status(200).json({
-                message:"Usuario Logado",
-                token: resultado.token,
-                user: resultado.user
-            })
-        } else {
+        try {
+            const {email, senha} = req.body
+            const resultado = await this.authServices.login({email, senha})
+    
+            if (resultado) {
+                res.status(200).json({
+                    message:"Usuario Logado",
+                    token: resultado.token,
+                    user: resultado.user
+                })
+            } else {
+                res.status(400).json({
+                    message: "Falha ao fazer login"
+                })
+            }
+        } catch (error) {
             res.status(400).json({
-                message: "Falha ao fazer login"
+                "error":error.message
             })
         }
     }

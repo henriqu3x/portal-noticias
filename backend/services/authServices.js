@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
 class AuthServices {
-    async register({usuario, email, senha, senha_repetida}) {
+    async register({usuario, email, senha, repita_senha}) {
         const usuarioUnico = await prisma.usuario.findUnique({
             where: {email}
         })
@@ -13,7 +13,7 @@ class AuthServices {
             throw new Error("Já existe um usuario com esse email");
         }
 
-        if (senha != senha_repetida) {
+        if (senha != repita_senha) {
             throw new Error("As senhas não batem");
         }
 
@@ -36,7 +36,7 @@ class AuthServices {
 
         const usuarioBanco = await prisma.usuario.create({
             data:{
-                nome: usuarioMock.nome,
+                nome: usuarioMock.usuario,
                 email: usuarioMock.email,
                 senha: usuarioMock.senhaHasheada,
                 perfil_id: usuarioMock.tipo
