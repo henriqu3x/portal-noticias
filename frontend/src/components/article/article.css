@@ -1,10 +1,11 @@
 .noticias-aside{
     text-decoration: none;
+    flex: 1;
 }
 
 .noticias-aside article{
     background-color: var(--text-color-primary);
-    height: calc(45vh - 140px);
+    height: 100%;
     width: 100%;
     color: var(--text-color-primary);
     display: flex;

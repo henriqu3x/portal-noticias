@@ -1,11 +1,11 @@
 #noticias{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 20px;
     background-color: var(--background-primary);
-    height: 100%;
-    padding: 0 80px;
+    height: calc(100vh - 140px);
+    padding: 20px;
 }
 
 #noticias aside{

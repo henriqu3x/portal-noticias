@@ -5,10 +5,11 @@
     text-shadow: -1px -1px var(--text-color-tertiary);
     text-shadow: -1px 1px var(--text-color-tertiary);
     text-shadow: 1px -1px var(--text-color-tertiary);
+    flex: 1;
 }
 
 .noticias-princi article{
-    height: calc(57.8vh - 140px);
+    height: 100%;
     width: 100%;
     display: flex;
     align-items: start;
