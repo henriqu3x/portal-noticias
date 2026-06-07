@@ -25,7 +25,8 @@ class UserControllers {
 
     alterarStatus = async (req,res) => {
         try {
-            const {id, status} = req.body
+            const id = req.params.id
+            const status = req.body.status
 
             const resultado = this.userServices.alterarStatus({id, status})
 
@@ -45,7 +46,7 @@ class UserControllers {
 
     deletarUsuario = async (req,res) => {
         try {
-            const id = req.body.id
+            const id = req.params.id
 
             const resultado = this.userServices.deletarUsuario({id})
 

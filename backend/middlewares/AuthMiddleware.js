@@ -5,7 +5,7 @@ const AuthMiddleware = (req,res,next) => {
     const authHeader = req.headers.authorization
 
     if (!authHeader) {
-        res.status(400).json({
+        return res.status(401).json({
             "message": "Header não enviado"
         })
     }
@@ -19,7 +19,7 @@ const AuthMiddleware = (req,res,next) => {
 
         next()
     } catch (error) {
-        res.status(400).json({
+        return res.status(401).json({
             "error": error.message
         })
     }

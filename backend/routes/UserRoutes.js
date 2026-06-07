@@ -6,8 +6,8 @@ const userControllers = new UserControllers()
 
 UserRoutes.get('/usuarios', userControllers.visualizarUsuarios)
 
-UserRoutes.patch('/usuarios', userControllers.alterarStatus)
+UserRoutes.patch('/usuarios/:id', userControllers.alterarStatus)
 
-UserRoutes.delete('/usuarios', userControllers.deletarUsuario)
+UserRoutes.delete('/usuarios/:id', userControllers.deletarUsuario)
 
 export default UserRoutes

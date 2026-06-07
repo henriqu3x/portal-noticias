@@ -66,7 +66,8 @@ class NewsController {
 
     editarNoticia = async (req,res) => {
         try {
-            const {idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool} = req.body
+            const idNoticia = req.params.id
+            const {titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool} = req.body
             const resultado = await this.newsServices.editarNoticia({idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool})
 
             if (resultado) {
@@ -85,7 +86,8 @@ class NewsController {
 
     alterarStatusNoticia = async (req,res) => {
         try {
-            const {idNoticia, statusBool} = req.body
+            const idNoticia = req.params.id
+            const statusBool = req.body.statusBool
             const resultado = await this.newsServices.alterarStatusNoticia({idNoticia, statusBool})
 
             if (resultado) {
