@@ -1,4 +1,4 @@
-const NewsMiddleware = (req,res,next) => {
+const AdminMiddleware = (req,res,next) => {
     const tipo = req.user.tipo
 
     if(!tipo){
@@ -16,4 +16,4 @@ const NewsMiddleware = (req,res,next) => {
     next()
 }
 
-export default NewsMiddleware
+export default AdminMiddleware
