@@ -4,14 +4,14 @@ import NewsController from '../controllers/NewsControllers.js'
 const NewsRouter = express.Router()
 const newsController = new NewsController()
 
-NewsRouter.get('/noticias', (req,res) => newsController.visualizarNoticias(req,res))
+NewsRouter.get('/noticias', newsController.visualizarNoticias)
 
-NewsRouter.get('/noticias/:id', (req,res) => newsController.visualizarNoticiasID(req,res))
+NewsRouter.get('/noticias/:id', newsController.visualizarNoticiasID)
 
-NewsRouter.post('/noticias', (req,res) => newsController.adicionarNoticia(req,res))
+NewsRouter.post('/noticias', newsController.adicionarNoticia)
 
-NewsRouter.put('/noticias', (req,res) => newsController.editarNoticia(req,res))
+NewsRouter.put('/noticias', newsController.editarNoticia)
 
-NewsRouter.patch('/noticias', (req,res) => newsController.alterarStatusNoticia(req,res))
+NewsRouter.patch('/noticias', newsController.alterarStatusNoticia)
 
 export default NewsRouter

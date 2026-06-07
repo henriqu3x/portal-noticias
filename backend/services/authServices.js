@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
 class AuthServices {
-    async register({usuario, email, senha, repita_senha}) {
+    register = async ({usuario, email, senha, repita_senha}) => {
         const usuarioUnico = await prisma.usuario.findUnique({
             where: {email}
         })
@@ -51,7 +51,7 @@ class AuthServices {
         }
     }
 
-    async login({email, senha}){
+    login = async ({email, senha}) => {
         const usuario = await prisma.usuario.findFirst({
             where:{
                 email: email

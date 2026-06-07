@@ -5,7 +5,7 @@ class UserControllers {
         this.userServices = new UserServices()
     }
 
-    async visualizarUsuarios(req,res) {
+    visualizarUsuarios = async (req,res) => {
         try {
             const resultado = this.userServices.visualizarUsuarios()
     
@@ -23,7 +23,7 @@ class UserControllers {
         }
     }
 
-    async alterarStatus(req,res) {
+    alterarStatus = async (req,res) => {
         try {
             const {id, status} = req.body
 
@@ -43,7 +43,7 @@ class UserControllers {
         }
     }
 
-    async deletarUsuario(req,res) {
+    deletarUsuario = async (req,res) => {
         try {
             const id = req.body.id
 

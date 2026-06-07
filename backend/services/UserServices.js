@@ -1,7 +1,7 @@
 import prisma from "../prisma/client.js"
 
 class UsersServices {
-    async visualizarUsuarios(){
+    visualizarUsuarios = async () => {
         const usuarios = await prisma.usuario.findMany({
             include:{
                 perfil:true
@@ -16,7 +16,7 @@ class UsersServices {
         }))
     }
 
-    async alterarStatus({id, status}){
+    alterarStatus = async ({id, status}) => {
         const perfil = await prisma.perfil.findFirst({
             where:{
                 tipo_perfil: status
@@ -46,7 +46,7 @@ class UsersServices {
         }
     }
 
-    async deletarUsuario({id}){
+    deletarUsuario = async ({id}) => {
         const usuarioDeletado = await prisma.usuario.delete({
             where:{
                 id:id

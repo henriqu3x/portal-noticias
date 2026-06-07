@@ -6,7 +6,7 @@ class AuthControllers {
         this.authServices = new AuthServices()
     }
 
-    async register(req,res){
+    register = async (req,res) => {
         try {
             const {usuario, email, senha, repita_senha} = req.body
             const resultado = await this.authServices.register({usuario, email, senha, repita_senha})
@@ -27,7 +27,7 @@ class AuthControllers {
         }
     }
 
-    async login(req,res){
+    login = async (req,res) =>{
         try {
             const {email, senha} = req.body
             const resultado = await this.authServices.login({email, senha})

@@ -5,7 +5,7 @@ class NewsController {
         this.newsServices = new NewsServices()
     }
 
-    async visualizarNoticias(req,res){
+    visualizarNoticias = async (req,res) => {
         try {
             const resultado = await this.newsServices.visualizarNoticias()
 
@@ -23,7 +23,7 @@ class NewsController {
         }
     }
 
-    async visualizarNoticiasID(req,res){
+    visualizarNoticiasID = async (req,res) => {
 
         try {
             const idNoticia = req.params.id
@@ -44,7 +44,7 @@ class NewsController {
         }
     }
 
-    async adicionarNoticia(req,res){
+    adicionarNoticia = async (req,res) => {
         try {
             const {titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId} = req.body
 
@@ -64,7 +64,7 @@ class NewsController {
         }
     }
 
-    async editarNoticia(req,res){
+    editarNoticia = async (req,res) => {
         try {
             const {idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool} = req.body
             const resultado = await this.newsServices.editarNoticia({idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool})
@@ -83,7 +83,7 @@ class NewsController {
         }
     }
 
-    async alterarStatusNoticia(req,res){
+    alterarStatusNoticia = async (req,res) => {
         try {
             const {idNoticia, statusBool} = req.body
             const resultado = await this.newsServices.alterarStatusNoticia({idNoticia, statusBool})

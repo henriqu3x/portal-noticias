@@ -1,7 +1,7 @@
 import prisma from "../prisma/client.js"
 
 class NewsServices {
-    async visualizarNoticias() {
+    visualizarNoticias = async () => {
         const noticias = await prisma.noticia.findMany({
             include: {
                 image: true
@@ -21,7 +21,7 @@ class NewsServices {
         }))
     }
 
-    async visualizarNoticiasID({idNoticia}) {
+    visualizarNoticiasID = async ({idNoticia}) => {
         const noticia = await prisma.noticia.findUnique({
             where:{
                 id:idNoticia
@@ -48,7 +48,7 @@ class NewsServices {
         }
     }
 
-    async adicionarNoticia({ titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId }) {
+    adicionarNoticia = async ({ titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId }) => {
         if (!titulo) {
             throw new Error("Titulo vazio");
         }
@@ -123,7 +123,7 @@ class NewsServices {
 
     }
 
-    async editarNoticia({ idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool }) {
+    editarNoticia = async ({ idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool }) => {
         const noticia = await prisma.noticia.findUnique({
             where: {
                 id: idNoticia
@@ -199,7 +199,7 @@ class NewsServices {
         return resultado
     }
 
-    async alterarStatusNoticia({ idNoticia, statusBool }) {
+    alterarStatusNoticia = async ({ idNoticia, statusBool }) => {
         const verificacaoNoticia = await prisma.noticia.findUnique({
             where:{
                 id:idNoticia

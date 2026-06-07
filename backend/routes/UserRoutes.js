@@ -4,10 +4,10 @@ import UserControllers from '../controllers/UserControllers'
 const UserRoutes = express.Router()
 const userControllers = new UserControllers()
 
-UserRoutes.get('/usuarios', (req,res) => userControllers.visualizarUsuarios(req,res))
+UserRoutes.get('/usuarios', userControllers.visualizarUsuarios)
 
-UserRoutes.patch('/usuarios', (req,res) => userControllers.alterarStatus(req,res))
+UserRoutes.patch('/usuarios', userControllers.alterarStatus)
 
-UserRoutes.delete('/usuarios', (req,res) => userControllers.deletarUsuario(req,res))
+UserRoutes.delete('/usuarios', userControllers.deletarUsuario)
 
 export default UserRoutes
