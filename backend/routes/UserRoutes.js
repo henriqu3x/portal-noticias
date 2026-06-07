@@ -1,7 +1,7 @@
 import express from 'express'
-import UserControllers from '../controllers/UserControllers'
-import AuthMiddleware from '../middlewares/AuthMiddleware'
-import AdminMiddleware from '../middlewares/AdminMiddleware'
+import UserControllers from '../controllers/UserControllers.js'
+import AuthMiddleware from '../middlewares/AuthMiddleware.js'
+import AdminMiddleware from '../middlewares/AdminMiddleware.js'
 
 const UserRoutes = express.Router()
 const userControllers = new UserControllers()

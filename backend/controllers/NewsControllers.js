@@ -28,7 +28,7 @@ class NewsController {
         try {
             const idNoticia = req.params.id
     
-            const resultado = this.newsServices.visualizarNoticiasID({idNoticia})
+            const resultado = await this.newsServices.visualizarNoticiasID({idNoticia})
     
             if (resultado) {
                 res.status(200).json(resultado)

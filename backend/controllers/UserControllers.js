@@ -7,12 +7,12 @@ class UserControllers {
 
     visualizarUsuarios = async (req,res) => {
         try {
-            const resultado = this.userServices.visualizarUsuarios()
+            const resultado = await this.userServices.visualizarUsuarios()
     
             if (resultado) {
                 res.status(200).json(resultado)
             } else {
-                res.status(400),json({
+                res.status(400).json({
                     "message": "Nenhum usuario encontrado"
                 })
             }
@@ -28,7 +28,7 @@ class UserControllers {
             const id = req.params.id
             const status = req.body.status
 
-            const resultado = this.userServices.alterarStatus({id, status})
+            const resultado = await this.userServices.alterarStatus({id, status})
 
             if (resultado) {
                 res.status(200).json(resultado)
@@ -48,7 +48,7 @@ class UserControllers {
         try {
             const id = req.params.id
 
-            const resultado = this.userServices.deletarUsuario({id})
+            const resultado = await this.userServices.deletarUsuario({id})
 
             if (resultado) {
                 res.status(200).json(resultado)
