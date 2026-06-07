@@ -46,7 +46,7 @@ class UsersServices {
         }
     }
 
-    async deletarUsuario(id){
+    async deletarUsuario({id}){
         const usuarioDeletado = await prisma.usuario.delete({
             where:{
                 id:id

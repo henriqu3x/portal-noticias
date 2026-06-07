@@ -6,6 +6,8 @@ const newsController = new NewsController()
 
 NewsRouter.get('/noticias', (req,res) => newsController.visualizarNoticias(req,res))
 
+NewsRouter.get('/noticias/:id', (req,res) => newsController.visualizarNoticiasID(req,res))
+
 NewsRouter.post('/noticias', (req,res) => newsController.adicionarNoticia(req,res))
 
 NewsRouter.put('/noticias', (req,res) => newsController.editarNoticia(req,res))

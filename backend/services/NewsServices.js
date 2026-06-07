@@ -21,6 +21,33 @@ class NewsServices {
         }))
     }
 
+    async visualizarNoticiasID({idNoticia}) {
+        const noticia = await prisma.noticia.findUnique({
+            where:{
+                id:idNoticia
+            },
+            include:{
+                image:true
+            }
+        })
+
+        if (!noticia) {
+            throw new Error("Nenhuma noticia encontrada com esse id");
+        }
+
+        return {
+            id: noticia.id,
+            titulo: noticia.titulo,
+            descricao: noticia.descricao,
+            status: noticia.status,
+            imagemUrl: noticia.image.url,
+            imagemAlt: noticia.image.alt,
+            dataPublicacao: noticia.data_publicacao,
+            dataAtualizacao: noticia.data_atualizacao,
+            conteudo: noticia.conteudo
+        }
+    }
+
     async adicionarNoticia({ titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId }) {
         if (!titulo) {
             throw new Error("Titulo vazio");

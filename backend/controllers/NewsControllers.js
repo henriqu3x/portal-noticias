@@ -23,6 +23,27 @@ class NewsController {
         }
     }
 
+    async visualizarNoticiasID(req,res){
+
+        try {
+            const idNoticia = req.params.id
+    
+            const resultado = this.newsServices.visualizarNoticiasID({idNoticia})
+    
+            if (resultado) {
+                res.status(200).json(resultado)
+            } else {
+                res.status(400).json({
+                    "message": "Erro ao encontrar noticia"
+                })
+            }
+        } catch (error) {
+            res.status(400).json({
+                "error": error.message
+            })
+        }
+    }
+
     async adicionarNoticia(req,res){
         try {
             const {titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId} = req.body
