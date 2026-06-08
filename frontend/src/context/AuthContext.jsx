@@ -22,6 +22,20 @@ export const AuthProvider = ({children}) => {
         setLoading(false)
     }, [])
 
+    const register = async (usuario, email, senha, repita_senha) => {
+        try {
+            const response = await api.post('/register', {
+                usuario,
+                email,
+                senha,
+                repita_senha
+            })
+
+            return response.data
+        } catch (error) {
+            error.response?.data?.message || error.response?.data?.error || "Falha ao cadastrar usuario"
+        }
+    }
 
     const login = async (email, senha) => {
         try {
@@ -66,6 +80,7 @@ export const AuthProvider = ({children}) => {
             user,
             token,
             loading,
+            register,
             login,
             logout,
             isAuthenticated,
