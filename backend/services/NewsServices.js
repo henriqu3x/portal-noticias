@@ -48,7 +48,7 @@ class NewsServices {
         }
     }
 
-    adicionarNoticia = async ({ titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId }) => {
+    adicionarNoticia = async ({ titulo, descricao, imagemUrl, imagemAlt, conteudo, status, usuarioId }) => {
         if (!titulo) {
             throw new Error("Titulo vazio");
         }
@@ -69,7 +69,7 @@ class NewsServices {
             throw new Error("Conteudo vazio");
         }
 
-        if (!statusBool) {
+        if (!status) {
             throw new Error("Status não selecionado");
         }
 
@@ -99,7 +99,7 @@ class NewsServices {
                 data: {
                     titulo: titulo,
                     descricao: descricao,
-                    status: statusBool,
+                    status: status,
                     image_id: imagem.id,
                     usuario_id: usuarioId,
                     conteudo: conteudo
@@ -109,7 +109,7 @@ class NewsServices {
             return {
                 titulo: noticia.titulo,
                 descricao: noticia.descricao,
-                statusBool: noticia.status,
+                status: noticia.status,
                 imagemurl: imagem.url,
                 imagemAlt: imagem.alt,
                 usuarioId: noticia.usuario_id,
@@ -123,7 +123,7 @@ class NewsServices {
 
     }
 
-    editarNoticia = async ({ idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool }) => {
+    editarNoticia = async ({ idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, status }) => {
         const noticia = await prisma.noticia.findUnique({
             where: {
                 id: idNoticia
@@ -154,7 +154,7 @@ class NewsServices {
             throw new Error("Conteudo vazio");
         }
 
-        if (!statusBool) {
+        if (status == undefined || status == null) {
             throw new Error("Status não selecionado");
         }
 
@@ -176,7 +176,7 @@ class NewsServices {
                 data: {
                     titulo: titulo,
                     descricao: descricao,
-                    status: statusBool,
+                    status: status,
                     conteudo: conteudo
                 },
                 include: {
@@ -185,10 +185,11 @@ class NewsServices {
             })
 
             return {
+                id: noticiaAtualizada.id,
                 titulo: noticiaAtualizada.titulo,
                 descricao: noticiaAtualizada.descricao,
-                statusBool: noticiaAtualizada.status,
-                imagemurl: noticiaAtualizada.image.url,
+                status: noticiaAtualizada.status,
+                imagemUrl: noticiaAtualizada.image.url,
                 imagemAlt: noticiaAtualizada.image.alt,
                 conteudo: noticiaAtualizada.conteudo,
                 dataPublicacao: noticiaAtualizada.data_publicacao,
@@ -199,7 +200,7 @@ class NewsServices {
         return resultado
     }
 
-    alterarStatusNoticia = async ({ idNoticia, statusBool }) => {
+    alterarStatusNoticia = async ({ idNoticia, status }) => {
         const verificacaoNoticia = await prisma.noticia.findUnique({
             where:{
                 id:idNoticia
@@ -215,7 +216,7 @@ class NewsServices {
                 id: idNoticia
             },
             data: {
-                status: statusBool
+                status: status
             }
         })
 

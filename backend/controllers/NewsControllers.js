@@ -12,9 +12,7 @@ class NewsController {
             if (resultado.length > 0) {
                 res.status(200).json(resultado)
             } else {
-                res.status(400).json({
-                    "message": "Nenhuma noticia encontrada"
-                })
+                res.status(200).json([])
             }
         } catch (error) {
             res.status(400).json({
@@ -46,9 +44,9 @@ class NewsController {
 
     adicionarNoticia = async (req,res) => {
         try {
-            const {titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId} = req.body
+            const {titulo, descricao, imagemUrl, imagemAlt, conteudo, status, usuarioId} = req.body
 
-            const resultado = await this.newsServices.adicionarNoticia({titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, usuarioId})
+            const resultado = await this.newsServices.adicionarNoticia({titulo, descricao, imagemUrl, imagemAlt, conteudo, status, usuarioId})
 
             if (resultado) {
                 res.status(201).json(resultado)
@@ -67,8 +65,8 @@ class NewsController {
     editarNoticia = async (req,res) => {
         try {
             const idNoticia = req.params.id
-            const {titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool} = req.body
-            const resultado = await this.newsServices.editarNoticia({idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool})
+            const {titulo, descricao, imagemUrl, imagemAlt, conteudo, status} = req.body
+            const resultado = await this.newsServices.editarNoticia({idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, status})
 
             if (resultado) {
                 res.status(200).json(resultado)
@@ -87,8 +85,8 @@ class NewsController {
     alterarStatusNoticia = async (req,res) => {
         try {
             const idNoticia = req.params.id
-            const statusBool = req.body.statusBool
-            const resultado = await this.newsServices.alterarStatusNoticia({idNoticia, statusBool})
+            const status = req.body.status
+            const resultado = await this.newsServices.alterarStatusNoticia({idNoticia, status})
 
             if (resultado) {
                 res.status(200).json(resultado)

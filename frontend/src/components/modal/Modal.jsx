@@ -1,6 +1,45 @@
+import { useEffect, useState } from 'react'
 import './modal.css'
 
 const Modal = (props) => {
+    const [titulo, setTitulo] = useState('')
+    const [descricao, setDescricao] = useState('')
+    const [imagemUrl, setImagemUrl] = useState('')
+    const [imagemAlt, setImagemAlt] = useState('')
+    const [conteudo, setConteudo] = useState('')
+    const [status, setStatus] = useState(true)
+
+    useEffect(() => {
+        if (props.mode == 'att') {
+            setTitulo(props.noticia.titulo)
+            setDescricao(props.noticia.descricao)
+            setImagemUrl(props.noticia.imagemUrl)
+            setImagemAlt(props.noticia.imagemAlt)
+            setConteudo(props.noticia.conteudo)
+            setStatus(props.noticia.status)
+        }
+
+        if (props.mode == 'add') {
+            setTitulo('')
+            setDescricao('')
+            setImagemUrl('')
+            setImagemAlt('')
+            setConteudo('')
+            setStatus(true)
+        }
+    }, [props.mode, props.noticia])
+
+
+    const formularioSubmit = (e) => {
+        e.preventDefault()
+
+        let statusBool = Boolean(status)
+
+        props.onSubmit(props.noticia?.id, titulo, descricao, imagemUrl, imagemAlt, conteudo, statusBool, props.mode)
+
+        props.onClose()
+    }
+    
     return(
         <div className='overlay' onClick={props.onClose}>
             <section className='modal' onClick={(e) => e.stopPropagation()}>
@@ -11,29 +50,29 @@ const Modal = (props) => {
                     </div>
                 </div>
 
-                <form className='formulario'>
+                <form className='formulario' onSubmit={formularioSubmit}>
                     <label htmlFor="titulo">Titulo:</label>
-                    <input id='titulo' type="text" placeholder='Ex: Seleção Brasileira...'/>
+                    <input required onChange={(e) => setTitulo(e.target.value)} id='titulo' type="text" placeholder='Ex: Seleção Brasileira...' value={titulo ?? ''}/>
 
                     <label htmlFor="descricao">Descricão:</label>
-                    <input id='descricao' type="text" placeholder='Ex: Durante Treinamento...'/>
+                    <input required onChange={(e) => setDescricao(e.target.value)} id='descricao' type="text" placeholder='Ex: Durante Treinamento...' value={descricao?? ''}/>
 
                     <label htmlFor="imagem">Imagem (Url):</label>
-                    <input id='imagem' type="text" placeholder='Ex: https://site.com/imagem'/>
+                    <input required onChange={(e) => setImagemUrl(e.target.value)} id='imagem' type="url" placeholder='Ex: https://site.com/imagem' value={imagemUrl?? ''}/>
 
                     <label htmlFor="imagem-alt">Imagem (Alt):</label>
-                    <input id='imagem-alt' type="text" placeholder='Ex: Jogadores da seleção brasileira'/>
+                    <input required onChange={(e) => setImagemAlt(e.target.value)} id='imagem-alt' type="text" placeholder='Ex: Jogadores da seleção brasileira' value={imagemAlt?? ''}/>
 
                     <label htmlFor="conteudo">Conteudo:</label>
-                    <textarea name="conteudo" id="conteudo" placeholder='Ex: A roupa usada pelos jogadores...'></textarea>
+                    <textarea required onChange={(e) => setConteudo(e.target.value)} name="conteudo" id="conteudo" placeholder='Ex: A roupa usada pelos jogadores...' value={conteudo?? ''}></textarea>
 
                     <label htmlFor="status">Status:</label>
-                    <select aria-label='selecionar-status' name="status" id="status">
+                    <select required onChange={(e) => setStatus(e.target.value === 'true')} aria-label='selecionar-status' name="status" id="status" value={String(status)}>
                         <option value="true">Ativo</option>
                         <option value="false">Arquivado</option>
                     </select>
 
-                    <button className='btn' aria-label='adicionar-noticia'>{props.mode == 'add'?'Adicionar':'Atualizar'}</button>
+                    <button type='submit' className='btn' aria-label='adicionar-noticia'>{props.mode == 'add'?'Adicionar':'Atualizar'}</button>
                 </form>
             </section>
         </div>
