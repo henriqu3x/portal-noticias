@@ -6,6 +6,7 @@ import RegisterScreen from "../pages/RegisterScreen/RegisterScreen"
 import Admin from "../pages/Admin/Admin"
 import Noticia from "../pages/Noticia/Noticia"
 import NoticiasRecentes from "../pages/NoticiasRecentes/NoticiasRecentes"
+import AdminRoute from "./AdminRoute"
 
 const Paths = () => {
     return(
@@ -15,7 +16,9 @@ const Paths = () => {
                     <Route path='/' element={<Home/>}/>
                     <Route path='/login' element={<LoginScreen/>}/>
                     <Route path='/register' element={<RegisterScreen/>}/>
-                    <Route path='/admin' element={<Admin/>}/>
+                    <Route path='/admin' element={<AdminRoute>
+                        <Admin/>
+                    </AdminRoute>}/>
                     <Route path='/noticia/:id' element={<Noticia/>}/>
                     <Route path='/noticias-recentes' element={<NoticiasRecentes/>}/>
                     <Route path="*" element={<NotFound/>}/>
