@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import './header.css'
-import {useAuth} from '../../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 
 const Header = () => {
-    const {user, isAuthenticated} = useAuth()
+    const { user, isAuthenticated, logout} = useAuth()
+
+    const sair = () => {
+        logout()
+    }
 
     return (
         <header>
@@ -23,10 +27,16 @@ const Header = () => {
                 </div>
             </form>
 
-            {isAuthenticated ? <a className="userLog" href="">
-                <p>{user.nome}</p>
-                <i className="fa-regular fa-circle-user circulo-usuario"></i>
-            </a> : <NavLink className='a-login' aria-label='fazer-login' to={'/login'}>Fazer Login</NavLink>}
+            {isAuthenticated ? <div className="userMenu">
+                <a className="userLog" href="">
+                    <p>{user.nome}</p>
+                    <i className="fa-regular fa-circle-user circulo-usuario"></i>
+                </a>
+
+                <div className="submenu">
+                    <button onClick={sair}>Logout</button>
+                </div>
+            </div> : <NavLink className='a-login' aria-label='fazer-login' to={'/login'}>Fazer Login</NavLink>}
         </header>
     )
 }
