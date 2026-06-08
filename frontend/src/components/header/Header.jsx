@@ -3,7 +3,7 @@ import './header.css'
 import {useAuth} from '../../context/AuthContext'
 
 const Header = () => {
-    const {isAuthenticated} = useAuth()
+    const {user, isAuthenticated} = useAuth()
 
     return (
         <header>
@@ -24,7 +24,8 @@ const Header = () => {
             </form>
 
             {isAuthenticated ? <a className="userLog" href="">
-                <i className="fa-regular fa-circle-user"></i>
+                <p>{user.nome}</p>
+                <i className="fa-regular fa-circle-user circulo-usuario"></i>
             </a> : <NavLink className='a-login' aria-label='fazer-login' to={'/login'}>Fazer Login</NavLink>}
         </header>
     )

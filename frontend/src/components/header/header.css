@@ -93,8 +93,14 @@ header .a-login:hover{
 }
 
 header .userLog {
-    font-size: var(--font-medium);
+    display: flex;
+    align-items: center;
+    gap: 5px;
     text-decoration: none;
+}
+
+header .userLog .circulo-usuario {
+    font-size: var(--font-medium);
 }
 
 @media (max-width:500px) {
