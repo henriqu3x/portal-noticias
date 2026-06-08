@@ -1,9 +1,12 @@
+import { AuthProvider } from "./context/AuthContext"
 import Paths from "./routes/Paths"
 
 const App = () => {
   return(
     <>
-      <Paths/>
+      <AuthProvider>
+        <Paths/>
+      </AuthProvider>
     </>
   )
 }

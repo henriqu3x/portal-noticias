@@ -109,6 +109,12 @@
     background-color: var(--background-secondary);
 }
 
+.login .error {
+    align-self: center;
+    color: var(--text-color-quaternary);
+    margin-block: 10px;
+}
+
 .divisor{
     display: flex;
     align-items: center;

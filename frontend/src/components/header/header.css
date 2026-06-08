@@ -92,6 +92,11 @@ header .a-login:hover{
     opacity: 0.95;
 }
 
+header .userLog {
+    font-size: var(--font-medium);
+    text-decoration: none;
+}
+
 @media (max-width:500px) {
     header h2{
         display: none;

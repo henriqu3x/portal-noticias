@@ -60,7 +60,7 @@ const LoginScreen = () => {
                         </div>
                     </div>
 
-                    {error? <p>{error}</p> : null}
+                    {error? <p className='error'>{error}</p> : null}
 
                     <button aria-label='Fazer-Login' type='submit'>
                         Entrar

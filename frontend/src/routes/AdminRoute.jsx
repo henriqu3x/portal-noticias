@@ -1,10 +1,10 @@
 import {useAuth} from '../context/AuthContext'
 import {useNavigate} from 'react-router-dom'
 
-const navigate = useNavigate()
 
 const AdminRoute = ({children}) => {
     const {loading, isAuthenticated, isAdmin} = useAuth()
+    const navigate = useNavigate()
 
     if (loading) {
         return <p>Carregando...</p>

@@ -33,7 +33,10 @@ export const AuthProvider = ({children}) => {
 
             return response.data
         } catch (error) {
-            error.response?.data?.message || error.response?.data?.error || "Falha ao cadastrar usuario"
+            const message = error.response?.data?.message || error.response?.data?.error || "Falha ao cadastrar usuario"
+
+            throw new Error(message);
+            
         }
     }
 

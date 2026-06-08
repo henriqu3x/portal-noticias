@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import './header.css'
+import {useAuth} from '../../context/AuthContext'
 
 const Header = () => {
+    const {isAuthenticated} = useAuth()
+
     return (
         <header>
             <NavLink to={'/'}><h2>F5</h2></NavLink>
@@ -20,7 +23,9 @@ const Header = () => {
                 </div>
             </form>
 
-            <NavLink className='a-login' aria-label='fazer-login' to={'/login'}>Fazer Login</NavLink>
+            {isAuthenticated ? <a className="userLog" href="">
+                <i className="fa-regular fa-circle-user"></i>
+            </a> : <NavLink className='a-login' aria-label='fazer-login' to={'/login'}>Fazer Login</NavLink>}
         </header>
     )
 }

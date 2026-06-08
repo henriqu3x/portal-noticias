@@ -66,6 +66,12 @@
     outline: none;
 }
 
+.register .error {
+    align-self: center;
+    margin-block: 10px;
+    color: var(--text-color-quaternary);
+}
+
 .input-senha{
     display: flex;
     position: relative;

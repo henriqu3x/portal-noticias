@@ -35,7 +35,7 @@ const RegisterScreen = () => {
 
           navigate('/login')
         } catch (error) {
-          error.message
+          setError(error.message)
         }
      }
 
@@ -89,7 +89,7 @@ const RegisterScreen = () => {
             </div>
           </div>
 
-          {error ? error : null}
+          {error ? <p className="error">{error}</p> : null}
 
           <button aria-label="cadastrar" type="submit">
             Cadastrar
