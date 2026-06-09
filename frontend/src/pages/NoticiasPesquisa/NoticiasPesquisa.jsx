@@ -6,14 +6,14 @@ import { NavLink, useParams, useSearchParams } from 'react-router-dom'
 
 const NoticiasPesquisa = () => {
     const [noticias, setNoticia] = useState([])
-    const {termo} = useParams()
+    const { termo } = useParams()
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
         const buscarNoticias = async () => {
             try {
-                const termo = searchParams.get('termo')
-                const response = await api.get(`/noticiasPesquisa?termo=${termo}`)
+                const term = searchParams.get('termo')
+                const response = await api.get(`/noticiasPesquisa?termo=${term}`)
 
                 setNoticia(response.data)
                 console.log(response.data)
@@ -23,7 +23,7 @@ const NoticiasPesquisa = () => {
         }
 
         buscarNoticias()
-    }, [])
+    }, [searchParams])
 
     return (
         <>
@@ -32,7 +32,7 @@ const NoticiasPesquisa = () => {
                 <section className='section-noticias-pesquisa'>
                     <h1>Noticias</h1>
 
-                    <div className='cards'>
+                    {noticias.length == 0 ? <p>Nenhuma noticia encontrada</p> : <div className='cards'>
                         {noticias.map((n) => {
                             return (
                                 <NavLink to={`/noticia/${n.id}`} aria-label='noticia-clicavel' key={n.id}>
@@ -46,7 +46,8 @@ const NoticiasPesquisa = () => {
                                 </NavLink>
                             )
                         })}
-                    </div>
+                    </div>}
+
                 </section>
             </main>
         </>
