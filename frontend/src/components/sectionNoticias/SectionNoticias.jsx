@@ -11,8 +11,8 @@ import api from '../../services/api'
 
 const SectionNoticias = () => {
     const [noticias, setNoticias] = useState([])
-    const duasNoticias = noticias.slice(0,2)
-    const tresNoticias = noticias.slice(2,5)
+    const duasNoticias = noticias.slice(0, 2)
+    const tresNoticias = noticias.slice(2, 5)
 
     useEffect(() => {
         const buscarNoticia = async () => {
@@ -34,11 +34,12 @@ const SectionNoticias = () => {
                 {tresNoticias.map((n) => {
                     return (
                         <Article
-                        id={n.id}
-                        image={n.imagemUrl}
-                        alt={n.imagemAlt}
-                        title={n.titulo}
-                        descricao={n.descricao}
+                            key={n.id}
+                            id={n.id}
+                            image={n.imagemUrl}
+                            alt={n.imagemAlt}
+                            title={n.titulo}
+                            descricao={n.descricao}
                         />
                     )
                 })}
@@ -47,11 +48,12 @@ const SectionNoticias = () => {
                 {duasNoticias.map((n) => {
                     return (
                         <CardNoticia
-                        id={n.id}
-                        image={n.imagemUrl}
-                        alt={n.imagemAlt}
-                        title={n.titulo}
-                        descricao={n.descricao}
+                            key={n.id}
+                            id={n.id}
+                            image={n.imagemUrl}
+                            alt={n.imagemAlt}
+                            title={n.titulo}
+                            descricao={n.descricao}
                         />
                     )
                 })}
