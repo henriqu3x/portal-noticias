@@ -1,5 +1,4 @@
 import './article.css'
-import imgTest from '../../assets/noticia2.avif'
 import { NavLink } from 'react-router-dom'
 
 const Article = (props) => {

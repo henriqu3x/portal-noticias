@@ -1,5 +1,4 @@
 import './noticiasRecentes.css'
-import noticia3 from '../../assets/noticia3.avif'
 import Header from '../../components/header/Header'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'

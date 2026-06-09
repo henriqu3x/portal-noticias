@@ -1,5 +1,4 @@
 import Header from "../../components/header/Header";
-import noticia6 from "../../assets/noticia6.avif";
 import "./noticia.css";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
