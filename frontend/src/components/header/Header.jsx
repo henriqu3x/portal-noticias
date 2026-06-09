@@ -3,7 +3,7 @@ import './header.css'
 import { useAuth } from '../../context/AuthContext'
 
 const Header = () => {
-    const { user, isAuthenticated, logout} = useAuth()
+    const { user, isAuthenticated, logout, isAdmin} = useAuth()
 
     const sair = () => {
         logout()
@@ -35,6 +35,7 @@ const Header = () => {
 
                 <div className="submenu">
                     <button onClick={sair}>Logout</button>
+                    {isAdmin? <NavLink to={'/admin'}>Admin</NavLink> : null}
                 </div>
             </div> : <NavLink className='a-login' aria-label='fazer-login' to={'/login'}>Fazer Login</NavLink>}
         </header>

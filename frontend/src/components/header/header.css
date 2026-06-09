@@ -105,31 +105,51 @@ header .userLog .circulo-usuario {
 
 .userMenu {
     position: relative;
+    padding: 20px;
 }
 
 .userMenu:hover .submenu{
-    display: block;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 .submenu{
-    position: absolute;
-    bottom: -56px;
+    position: fixed;
+    top: 70px;
+    left: 0;
 
     background-color: var(--background-secondary);
-    width: 107px;
-    z-index: 1;
+    width: 100vw;
+    z-index: 222;
 
     display: none;
     padding: 10px;
+    padding-right: 25px;
+}
+
+.submenu a {
+    font-size: var(--font-small-mobile);
+    transition: 0.2s all ease-in-out;
+    padding: 10px 15px;
+}
+
+.submenu a:hover{
+    opacity: 0.7;
 }
 
 .submenu button{
     padding: 10px 15px;
-    width: 100%;
+    /* width: 100%; */
     cursor: pointer;
     border: none;
     background-color: var(--background-secondary);
     color: var(--text-color-primary);
+    transition: 0.2s all ease-in-out;
+}
+
+.submenu button:hover{
+    opacity: 0.7;
 }
 
 @media (max-width:500px) {
