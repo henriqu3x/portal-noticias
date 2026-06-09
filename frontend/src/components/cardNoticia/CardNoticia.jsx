@@ -3,7 +3,7 @@ import './cardNoticia.css'
 
 const CardNoticia = (props) => {
     return (
-        <NavLink aria-label='bloco de noticias' className='noticias-princi' to={'/noticia/1'}>
+        <NavLink aria-label='bloco de noticias' className='noticias-princi' to={`/noticia/${props.id}`}>
             <article>
                 <div className='img-wrraper'>
                     <img src={props.image} alt={props.alt} />

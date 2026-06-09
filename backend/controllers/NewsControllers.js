@@ -6,8 +6,21 @@ class NewsController {
     }
 
     visualizarNoticias = async (req,res) => {
+        let limit = false
+
         try {
-            const resultado = await this.newsServices.visualizarNoticias()
+            if (req.query?.limit) {
+                limit = req.query?.limit
+            }
+
+            let resultado
+
+            if (limit) {
+                resultado = await this.newsServices.visualizarNoticias(limit)
+            } else {
+                resultado = await this.newsServices.visualizarNoticias()
+            }
+
 
             if (resultado.length > 0) {
                 res.status(200).json(resultado)

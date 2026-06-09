@@ -1,12 +1,30 @@
 import prisma from "../prisma/client.js"
 
 class NewsServices {
-    visualizarNoticias = async () => {
-        const noticias = await prisma.noticia.findMany({
-            include: {
-                image: true
-            }
-        })
+    visualizarNoticias = async (limit) => {
+        let noticias
+
+        if (limit) {
+            noticias = await prisma.noticia.findMany({
+                take:5,
+                include: {
+                    image: true
+                },
+                orderBy:{
+                    data_publicacao: 'desc'
+                }
+            }) 
+        } else {
+            noticias = await prisma.noticia.findMany({
+                include: {
+                    image: true
+                },
+                orderBy: {
+                    data_publicacao: "desc"
+                }
+            }) 
+        }
+
 
         return noticias.map((noticia) => ({
             id: noticia.id,

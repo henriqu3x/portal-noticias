@@ -36,8 +36,9 @@
 }
 
 .section-noticias-recentes .cards .card img{
-    height: 100%;
     border-radius: 6px;
+    max-width: 450px;
+    min-width: 450px;
 }
 
 .section-noticias-recentes .cards .card .box-text{

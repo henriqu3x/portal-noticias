@@ -1,8 +1,27 @@
 import './noticiasRecentes.css'
 import noticia3 from '../../assets/noticia3.avif'
 import Header from '../../components/header/Header'
+import { useEffect, useState } from 'react'
+import api from '../../services/api'
+import { NavLink } from 'react-router-dom'
 
 const NoticiasRecentes = () => {
+    const [noticias, setNoticia] = useState([])
+
+    useEffect(() => {
+        const buscarNoticias = async () => {
+            try {
+                const response = await api.get('/noticias')
+
+                setNoticia(response.data)
+            } catch (error) {
+                console.log(error.response?.data)
+            }
+        }
+
+        buscarNoticias()
+    }, [])
+
     return (
         <>
             <Header />
@@ -11,33 +30,19 @@ const NoticiasRecentes = () => {
                     <h1>Noticias Recentes</h1>
 
                     <div className='cards'>
-                        <a href="" aria-label='noticia-clicavel'>
-                            <div className='card'>
-                                <img src={noticia3} alt="" />
-                                <div className='box-text'>
-                                    <h2>Papa Leão XIV conhece Ferrari Luce de R$ 3,2 milhões e ganha volante</h2>
-                                    <p>Além de ser o primeiro carro elétrico da Ferrari, a Luce também é o primeiro modelo da marca italiana com espaço para cinco ocupantes e custa cerca de R$ 3,2 milhões.</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="" aria-label='noticia-clicavel'>
-                            <div className='card'>
-                                <img src={noticia3} alt="" />
-                                <div className='box-text'>
-                                    <h2>Papa Leão XIV conhece Ferrari Luce de R$ 3,2 milhões e ganha volante</h2>
-                                    <p>Além de ser o primeiro carro elétrico da Ferrari, a Luce também é o primeiro modelo da marca italiana com espaço para cinco ocupantes e custa cerca de R$ 3,2 milhões.</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="" aria-label='noticia-clicavel'>
-                            <div className='card'>
-                                <img src={noticia3} alt="" />
-                                <div className='box-text'>
-                                    <h2>Papa Leão XIV conhece Ferrari Luce de R$ 3,2 milhões e ganha volante</h2>
-                                    <p>Além de ser o primeiro carro elétrico da Ferrari, a Luce também é o primeiro modelo da marca italiana com espaço para cinco ocupantes e custa cerca de R$ 3,2 milhões.</p>
-                                </div>
-                            </div>
-                        </a>
+                        {noticias.map((n) => {
+                            return (
+                                <NavLink to={`/noticia/${n.id}`} aria-label='noticia-clicavel'>
+                                    <div className='card'>
+                                        <img src={n.imagemUrl} alt={n.imagemAlt} />
+                                        <div className='box-text'>
+                                            <h2>{n.titulo}</h2>
+                                            <p>{n.descricao}</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                            )
+                        })}
                     </div>
                 </section>
             </main>
