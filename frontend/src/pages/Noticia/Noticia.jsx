@@ -4,6 +4,7 @@ import "./noticia.css";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { useParams } from "react-router-dom";
+import dataConvertida from "../../services/dataConvertida";
 
 const Noticia = () => {
   const [noticia, setNoticia] = useState(null)
@@ -36,6 +37,7 @@ const Noticia = () => {
           <h1>
             {noticia.titulo}
           </h1>
+          <p>Ultima Atualização: {dataConvertida(noticia.dataAtualizacao)}</p>
           <p>
             {noticia.descricao}
           </p>
