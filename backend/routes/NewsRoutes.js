@@ -8,6 +8,8 @@ const newsController = new NewsController()
 
 NewsRouter.get('/noticias', newsController.visualizarNoticias)
 
+NewsRouter.get('/admin/noticias', AuthMiddleware, AdminMiddleware, newsController.visualizarNoticiasAdmin)
+
 NewsRouter.get('/noticias/:id', newsController.visualizarNoticiasID)
 
 NewsRouter.post('/noticias', AuthMiddleware, AdminMiddleware, newsController.adicionarNoticia)

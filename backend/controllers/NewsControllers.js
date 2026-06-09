@@ -5,7 +5,7 @@ class NewsController {
         this.newsServices = new NewsServices()
     }
 
-    visualizarNoticias = async (req,res) => {
+    visualizarNoticias = async (req, res) => {
         let limit = false
 
         try {
@@ -34,13 +34,29 @@ class NewsController {
         }
     }
 
-    visualizarNoticiasID = async (req,res) => {
+    visualizarNoticiasAdmin = async (req, res) => {
+        try {
+            const resultado = await this.newsServices.visualizarNoticiasAdmin()
+
+            if (resultado.length > 0) {
+                res.status(200).json(resultado)
+            } else {
+                res.status(200).json([])
+            }
+        } catch (error) {
+            res.status(400).json({
+                "error": error.message
+            })
+        }
+    }
+
+    visualizarNoticiasID = async (req, res) => {
 
         try {
             const idNoticia = req.params.id
-    
-            const resultado = await this.newsServices.visualizarNoticiasID({idNoticia})
-    
+
+            const resultado = await this.newsServices.visualizarNoticiasID({ idNoticia })
+
             if (resultado) {
                 res.status(200).json(resultado)
             } else {
@@ -55,11 +71,11 @@ class NewsController {
         }
     }
 
-    adicionarNoticia = async (req,res) => {
+    adicionarNoticia = async (req, res) => {
         try {
-            const {titulo, descricao, imagemUrl, imagemAlt, conteudo, status, usuarioId} = req.body
+            const { titulo, descricao, imagemUrl, imagemAlt, conteudo, status, usuarioId } = req.body
 
-            const resultado = await this.newsServices.adicionarNoticia({titulo, descricao, imagemUrl, imagemAlt, conteudo, status, usuarioId})
+            const resultado = await this.newsServices.adicionarNoticia({ titulo, descricao, imagemUrl, imagemAlt, conteudo, status, usuarioId })
 
             if (resultado) {
                 res.status(201).json(resultado)
@@ -75,11 +91,11 @@ class NewsController {
         }
     }
 
-    editarNoticia = async (req,res) => {
+    editarNoticia = async (req, res) => {
         try {
             const idNoticia = req.params.id
-            const {titulo, descricao, imagemUrl, imagemAlt, conteudo, status} = req.body
-            const resultado = await this.newsServices.editarNoticia({idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, status})
+            const { titulo, descricao, imagemUrl, imagemAlt, conteudo, status } = req.body
+            const resultado = await this.newsServices.editarNoticia({ idNoticia, titulo, descricao, imagemUrl, imagemAlt, conteudo, status })
 
             if (resultado) {
                 res.status(200).json(resultado)
@@ -95,11 +111,11 @@ class NewsController {
         }
     }
 
-    alterarStatusNoticia = async (req,res) => {
+    alterarStatusNoticia = async (req, res) => {
         try {
             const idNoticia = req.params.id
             const status = req.body.status
-            const resultado = await this.newsServices.alterarStatusNoticia({idNoticia, status})
+            const resultado = await this.newsServices.alterarStatusNoticia({ idNoticia, status })
 
             if (resultado) {
                 res.status(200).json(resultado)

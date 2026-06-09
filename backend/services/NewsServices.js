@@ -6,6 +6,9 @@ class NewsServices {
 
         if (limit) {
             noticias = await prisma.noticia.findMany({
+                where: {
+                    status: true
+                },
                 take:5,
                 include: {
                     image: true
@@ -16,6 +19,9 @@ class NewsServices {
             }) 
         } else {
             noticias = await prisma.noticia.findMany({
+                where: {
+                    status: true
+                },
                 include: {
                     image: true
                 },
@@ -24,6 +30,30 @@ class NewsServices {
                 }
             }) 
         }
+
+
+        return noticias.map((noticia) => ({
+            id: noticia.id,
+            titulo: noticia.titulo,
+            descricao: noticia.descricao,
+            status: noticia.status,
+            imagemUrl: noticia.image.url,
+            imagemAlt: noticia.image.alt,
+            dataPublicacao: noticia.data_publicacao,
+            dataAtualizacao: noticia.data_atualizacao,
+            conteudo: noticia.conteudo
+        }))
+    }
+
+    visualizarNoticiasAdmin = async () => {
+        const noticias = await prisma.noticia.findMany({
+            include: {
+                image: true
+            },
+            orderBy: {
+                data_publicacao: "desc"
+            }
+        })
 
 
         return noticias.map((noticia) => ({

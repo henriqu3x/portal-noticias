@@ -26,7 +26,7 @@ const Admin = () => {
     const buscarApi = async () => {
       try {
         const users = await api.get('/usuarios')
-        const news = await api.get('/noticias')
+        const news = await api.get('/admin/noticias')
 
         setUsuarios(users.data)
         setNoticias(news.data)
