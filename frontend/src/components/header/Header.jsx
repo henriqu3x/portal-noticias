@@ -1,12 +1,21 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './header.css'
 import { useAuth } from '../../context/AuthContext'
+import { useState } from 'react'
 
 const Header = () => {
     const { user, isAuthenticated, logout, isAdmin} = useAuth()
+    const [termo, setTermo] = useState('')
+    const navigate = useNavigate()
+    
 
     const sair = () => {
         logout()
+    }
+
+    const pesquisaForm = (e) => {
+        e.preventDefault()
+        navigate(`/noticias?termo=${termo}`)
     }
 
     return (
@@ -19,11 +28,11 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
-            <form>
+            <form onSubmit={pesquisaForm}>
                 <label htmlFor="search-input">Pesquisar:</label>
                 <div>
-                    <input id="search-input" type="search" placeholder="Noticias..." />
-                    <button aria-label="Pesquisar Conteudo"><i className="fa-solid fa-magnifying-glass"></i></button>
+                    <input onChange={(e) => setTermo(e.target.value)} id="search-input" type="search" placeholder="Noticias..." />
+                    <button type='submit' aria-label="Pesquisar Conteudo"><i className="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
 

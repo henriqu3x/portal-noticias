@@ -1,19 +1,22 @@
-import './noticiasRecentes.css'
-import noticia3 from '../../assets/noticia3.avif'
+import './NoticiasPesquisa.css'
 import Header from '../../components/header/Header'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams, useSearchParams } from 'react-router-dom'
 
-const NoticiasRecentes = () => {
+const NoticiasPesquisa = () => {
     const [noticias, setNoticia] = useState([])
+    const {termo} = useParams()
+    const [searchParams] = useSearchParams()
 
     useEffect(() => {
         const buscarNoticias = async () => {
             try {
-                const response = await api.get('/noticias')
+                const termo = searchParams.get('termo')
+                const response = await api.get(`/noticiasPesquisa?termo=${termo}`)
 
                 setNoticia(response.data)
+                console.log(response.data)
             } catch (error) {
                 console.log(error.response?.data)
             }
@@ -25,9 +28,9 @@ const NoticiasRecentes = () => {
     return (
         <>
             <Header />
-            <main className='noticias-recentes'>
-                <section className='section-noticias-recentes'>
-                    <h1>Noticias Recentes</h1>
+            <main className='noticias-pesquisa'>
+                <section className='section-noticias-pesquisa'>
+                    <h1>Noticias</h1>
 
                     <div className='cards'>
                         {noticias.map((n) => {
@@ -50,4 +53,4 @@ const NoticiasRecentes = () => {
     )
 }
 
-export default NoticiasRecentes
+export default NoticiasPesquisa

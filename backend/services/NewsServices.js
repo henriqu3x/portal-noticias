@@ -9,14 +9,14 @@ class NewsServices {
                 where: {
                     status: true
                 },
-                take:5,
+                take: 5,
                 include: {
                     image: true
                 },
-                orderBy:{
+                orderBy: {
                     data_publicacao: 'desc'
                 }
-            }) 
+            })
         } else {
             noticias = await prisma.noticia.findMany({
                 where: {
@@ -28,8 +28,50 @@ class NewsServices {
                 orderBy: {
                     data_publicacao: "desc"
                 }
-            }) 
+            })
         }
+
+
+        return noticias.map((noticia) => ({
+            id: noticia.id,
+            titulo: noticia.titulo,
+            descricao: noticia.descricao,
+            status: noticia.status,
+            imagemUrl: noticia.image.url,
+            imagemAlt: noticia.image.alt,
+            dataPublicacao: noticia.data_publicacao,
+            dataAtualizacao: noticia.data_atualizacao,
+            conteudo: noticia.conteudo
+        }))
+    }
+
+    visualizarNoticiasPesquisa = async (termo) => {
+        const noticias = await prisma.noticia.findMany({
+            where: {
+                status: true,
+                OR: [
+                    {
+                        titulo: {
+                            contains: termo,
+                            mode: "insensitive"
+                        },
+                    },
+                    {
+                        descricao: {
+                            contains: termo,
+                            mode: "insensitive"
+                        },
+                    },
+                ]
+            },
+            include: {
+                image: true
+            },
+            orderBy: {
+                data_publicacao: "desc"
+            }
+        })
+
 
 
         return noticias.map((noticia) => ({
@@ -69,13 +111,13 @@ class NewsServices {
         }))
     }
 
-    visualizarNoticiasID = async ({idNoticia}) => {
+    visualizarNoticiasID = async ({ idNoticia }) => {
         const noticia = await prisma.noticia.findUnique({
-            where:{
-                id:idNoticia
+            where: {
+                id: idNoticia
             },
-            include:{
-                image:true
+            include: {
+                image: true
             }
         })
 
@@ -126,12 +168,12 @@ class NewsServices {
         }
 
         const usuario = await prisma.usuario.findUnique({
-            where:{
-                id:usuarioId
+            where: {
+                id: usuarioId
             }
         })
 
-        if(!usuario){
+        if (!usuario) {
             throw new Error("Usuario não encontrado");
         }
 
@@ -250,8 +292,8 @@ class NewsServices {
 
     alterarStatusNoticia = async ({ idNoticia, status }) => {
         const verificacaoNoticia = await prisma.noticia.findUnique({
-            where:{
-                id:idNoticia
+            where: {
+                id: idNoticia
             }
         })
 

@@ -7,6 +7,7 @@ import Admin from "../pages/Admin/Admin"
 import Noticia from "../pages/Noticia/Noticia"
 import NoticiasRecentes from "../pages/NoticiasRecentes/NoticiasRecentes"
 import AdminRoute from "./AdminRoute"
+import NoticiasPesquisa from "../pages/NoticiasPesquisa/NoticiasPesquisa"
 
 const Paths = () => {
     return(
@@ -21,6 +22,7 @@ const Paths = () => {
                     </AdminRoute>}/>
                     <Route path='/noticia/:id' element={<Noticia/>}/>
                     <Route path='/noticias-recentes' element={<NoticiasRecentes/>}/>
+                    <Route path='/noticias' element={<NoticiasPesquisa/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>

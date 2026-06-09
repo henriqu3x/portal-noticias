@@ -34,6 +34,24 @@ class NewsController {
         }
     }
 
+    visualizarNoticiasPesquisa = async (req, res) => {
+        try {
+            const termo = req.query?.termo
+
+            const resultado = await this.newsServices.visualizarNoticiasPesquisa(termo)
+
+            if (resultado.length > 0) {
+                res.status(200).json(resultado)
+            } else {
+                res.status(200).json([])
+            }
+        } catch (error) {
+            res.status(400).json({
+                "error": error.message
+            })
+        }
+    }
+
     visualizarNoticiasAdmin = async (req, res) => {
         try {
             const resultado = await this.newsServices.visualizarNoticiasAdmin()

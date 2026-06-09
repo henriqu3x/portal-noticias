@@ -12,6 +12,8 @@ NewsRouter.get('/admin/noticias', AuthMiddleware, AdminMiddleware, newsControlle
 
 NewsRouter.get('/noticias/:id', newsController.visualizarNoticiasID)
 
+NewsRouter.get('/noticiasPesquisa', newsController.visualizarNoticiasPesquisa)
+
 NewsRouter.post('/noticias', AuthMiddleware, AdminMiddleware, newsController.adicionarNoticia)
 
 NewsRouter.put('/noticias/:id', AuthMiddleware, AdminMiddleware, newsController.editarNoticia)
